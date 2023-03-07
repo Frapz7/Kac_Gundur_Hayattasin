@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gün Sorusu</title>
+    <style></style>
+  </head>
+  <body>
+    <form>
+      <label>başlangıç tarihi</label><br /><br />
+      <input type="number" id="gun" placeholder="Gün" /><br /><br />
+      <input type="number" id="ay" placeholder="Ay" /><br /><br />
+      <input type="number" id="yil" placeholder="Yıl" /><br /><br />
+      <label>bitiş tarihi</label><br />
+      <input type="number" id="gun1" placeholder="Gün" /><br /><br />
+      <input type="number" id="ay1" placeholder="Ay" /><br /><br />
+      <input type="number" id="yil1" placeholder="Yıl" /><br /><br />
+
+      <button id="buton" type="button">Hesapla</button>
+    </form>
+    <p id="sonuc"></p>
+
+    <script>
+      let buton = document.getElementById("buton");
+      buton.onclick= function(){
+          let sonuc = document.getElementById("sonuc");
+          let gun = Number(document.getElementById("gun").value);
+          let ay = Number(document.getElementById("ay").value);
+          let yil = Number(document.getElementById("yil").value);
+          let gun1 = Number(document.getElementById("gun1").value);
+          let ay1 = Number(document.getElementById("ay1").value);
+          let yil1 = Number(document.getElementById("yil1").value);
+
+          let h=(yil*365)+(ay*30)+gun;
+          let h1=(yil1*365)+(ay1*30)+gun1;
+          let hesap= h1-h;
+
+          let ky= Math.floor(hesap/365);
+          let ka= Math.floor((hesap%365)/30);
+          let kg= Math.floor((hesap%365)%30);
+
+          sonuc.innerHTML=`tarihler arası toplam gün sayısı= ${hesap}
+                            tarihler arası ${ky} yıl, ${ka} ay ve ${kg} 
+                            gün geçmiştir.`
+                    
+      }
+    </script>
+  </body>
+</html>
